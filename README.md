@@ -1,2 +1,5 @@
-# blackfire-chart
-Helm chart for blackfire.io
+# Blackfire.io helm chart
+
+Unofficial Helm chart for blackfire.io
+
+
