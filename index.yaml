@@ -1,0 +1,20 @@
+apiVersion: v1
+entries:
+  blackfire:
+  - apiVersion: v1
+    appVersion: 1.17.0
+    created: 2018-06-16T20:51:03.107341343Z
+    description: An unofficial helm chart for blackfire.io
+    digest: badf0ec014a23214e06f79c3cae5ab30ef1fdedb7901e5240568d6415a5aec0c
+    home: https://blackfire.io/
+    maintainers:
+    - email: paolo.mainardi@sparkfabrik.com
+      name: Paolo Mainardi
+      url: https://github.com/paolomainardi
+    name: blackfire
+    sources:
+    - http://blackfire.io
+    urls:
+    - https://tech.sparkfabrik.com/blackfire-chart/blackfire-0.1.0.tgz
+    version: 0.1.0
+generated: 2018-06-16T20:51:03.106635111Z
