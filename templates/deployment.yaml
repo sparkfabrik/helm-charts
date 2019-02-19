@@ -25,9 +25,23 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
             - name: BLACKFIRE_SERVER_ID
+              {{- if .Values.blackfire.existingSecret }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.blackfire.existingSecret }}
+                  key: server_id
+              {{- else }}
               value: {{ .Values.blackfire.server_id }}
+              {{- end }}
             - name: BLACKFIRE_SERVER_TOKEN
+              {{- if .Values.blackfire.existingSecret }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.blackfire.existingSecret }}
+                  key: server_token
+              {{- else }}
               value: {{ .Values.blackfire.server_token }}
+              {{- end }}
           ports:
             - name: agent
               containerPort: 8707

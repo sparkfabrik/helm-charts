@@ -1,8 +1,8 @@
-{{ if eq .Values.blackfire.server_id "" }}
+{{ if and (eq .Values.blackfire.server_id "") (eq .Values.blackfire.existingSecret "") }}
 Blackfire server id cannot be empty, read the official documentation:
 https://blackfire.io/docs/introduction
 
-{{ else if eq .Values.blackfire.server_token "" }}
+{{ else if and (eq .Values.blackfire.server_token "") (eq .Values.blackfire.existingSecret "") }}
 Blackfire server token cannot be empty, read the official documentation:
 https://blackfire.io/docs/introduction
 
