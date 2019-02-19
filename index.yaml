@@ -3,9 +3,9 @@ entries:
   blackfire:
   - apiVersion: v1
     appVersion: 1.17.0
-    created: 2018-06-16T21:16:23.97885001Z
+    created: 2019-02-19T17:39:44.436767416Z
     description: An unofficial helm chart for blackfire.io
-    digest: badf0ec014a23214e06f79c3cae5ab30ef1fdedb7901e5240568d6415a5aec0c
+    digest: c3e6467a7bfc04ba7d580febf2d5cd51d965adc89c9de7063e64f9c01abce3f0
     home: https://blackfire.io/
     maintainers:
     - email: paolo.mainardi@sparkfabrik.com
@@ -15,6 +15,6 @@ entries:
     sources:
     - http://blackfire.io
     urls:
-    - https://tech.sparkfabrik.com/blackfire-chart/blackfire-0.1.0.tgz
-    version: 0.1.0
-generated: 2018-06-16T21:16:23.978028607Z
+    - https://tech.sparkfabrik.com/blackfire-chart/blackfire-0.2.0.tgz
+    version: 0.2.0
+generated: 2019-02-19T17:39:44.436322093Z
