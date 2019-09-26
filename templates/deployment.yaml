@@ -42,6 +42,8 @@ spec:
               {{- else }}
               value: {{ .Values.blackfire.server_token }}
               {{- end }}
+            - name: BLACKFIRE_LOG_LEVEL
+              value: {{ default "1" .Values.blackfire.log_level }}
           ports:
             - name: agent
               containerPort: 8707
