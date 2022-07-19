@@ -1,4 +1,4 @@
-apiVersion: apps/v1beta2
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ template "blackfire.fullname" . }}
@@ -24,6 +24,8 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
+            - name: BLACKFIRE_DISABLE_LEGACY_PORT
+              value: "1"
             - name: BLACKFIRE_SERVER_ID
               {{- if .Values.blackfire.existingSecret }}
               valueFrom:
@@ -31,7 +33,7 @@ spec:
                   name: {{ .Values.blackfire.existingSecret }}
                   key: server_id
               {{- else }}
-              value: {{ .Values.blackfire.server_id }}
+              value: {{ .Values.blackfire.server_id | quote }}
               {{- end }}
             - name: BLACKFIRE_SERVER_TOKEN
               {{- if .Values.blackfire.existingSecret }}
@@ -40,11 +42,11 @@ spec:
                   name: {{ .Values.blackfire.existingSecret }}
                   key: server_token
               {{- else }}
-              value: {{ .Values.blackfire.server_token }}
+              value: {{ .Values.blackfire.server_token | quote }}
               {{- end }}
           ports:
             - name: agent
-              containerPort: 8707
+              containerPort: 8307
               protocol: TCP
           livenessProbe:
             tcpSocket:
