@@ -1,5 +1,7 @@
-# Blackfire.io helm chart
+# Helm charts
 
-[![Build Status](https://travis-ci.org/sparkfabrik/blackfire-chart.svg?branch=master)](https://travis-ci.org/sparkfabrik/blackfire-chart)
+These software listings are packaged by Sparkfabrik. The respective trademarks mentioned in the offerings are owned by the respective companies, and use of them does not imply any affiliation or endorsement. The software is licensed to you subject to one or more open source licenses and Sparkfabrik provides the software on an AS-IS basis.
 
-Unofficial Helm chart for [blackfire.io](https://blackfire.io)
+## Charts
+
+- Unofficial Helm chart for [blackfire.io](./charts/blackfire/)
