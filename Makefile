@@ -13,5 +13,5 @@ install-kind:
 create-kind-cluster: install-kind
 	./scripts/create-kind.sh
 
-test:
-	helm install blackfire-test . --wait --debug --namespace default --set blackfire.server_id=$(BLACKFIRE_SERVER_ID) --set blackfire.server_token=$(BLACKFIRE_SERVER_TOKEN)
+test-blackfire:
+	helm install blackfire-test charts/blackfire --wait --debug --namespace default --set blackfire.server_id=$(BLACKFIRE_SERVER_ID) --set blackfire.server_token=$(BLACKFIRE_SERVER_TOKEN)
