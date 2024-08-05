@@ -18,4 +18,5 @@ helm install blackfire-test sparkfabrik-charts/blackfire --wait --debug --namesp
 
 ## Charts
 
-- Unofficial Helm chart for [blackfire.io](./charts/blackfire/)
+- Unofficial Helm chart for [blackfire.io](./charts/blackfire/).
+- Helm chart for deploying [SparkFabrik Docker-MinIO](./charts/docker-minio/).

@@ -1,13 +1,12 @@
-#!/bin/sh
-set -oe errexit
+#!/usr/bin/env bash
 
-CLUSTER_NAME="blackfire-chart"
-CLUSTER_VERSION="v1.21.12"
+set -eo pipefail
+shopt -s nullglob
 
-if [[ $(./bin/kind get clusters | grep ${CLUSTER_NAME}) ]]; then
-    echo "Cluster ${CLUSTER_NAME} already exists, doing nothing.";
-    kubectl cluster-info --context kind-${CLUSTER_NAME}
-    exit 0
-fi
+BASE=$(dirname "${0}")
 
-./bin/kind create cluster --config ./scripts/cluster.yaml --name ${CLUSTER_NAME} --wait 30s --image kindest/node:${CLUSTER_VERSION}
+source "${BASE}/common.sh"
+
+get_kind
+
+"${KIND_BIN}" create cluster --name "${CLUSTER_NAME}" ${CONFIG_OPT} --wait 60s --image "kindest/node:${CLUSTER_VERSION}"
