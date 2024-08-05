@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "docker-minio.fullname" . }}
+  labels:
+    {{- include "docker-minio.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+    {{- if .Values.console.enabled }}
+    - port: {{ .Values.console.port }}
+      targetPort: console
+      protocol: TCP
+      name: console
+    {{- end }}
+  selector:
+    {{- include "docker-minio.selectorLabels" . | nindent 4 }}
