@@ -1,0 +1,8 @@
+env:
+  BUCKET_NAME: my-bucket
+  MINIO_ROOT_USER: 1234qwer
+  MINIO_ROOT_PASSWORD: 1234qwer
+
+persistence:
+  enabled: true
+  storageClass: "standard"

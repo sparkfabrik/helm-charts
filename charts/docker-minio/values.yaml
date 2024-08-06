@@ -3,16 +3,21 @@
 # Declare variables to be passed into your templates.
 
 image:
+  # -- The image registry (e.g. docker.io, quay.io, ghcr.io).
   registry: ghcr.io
+  # -- The image repository.
   repository: sparkfabrik/docker-minio
-  pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
+  # -- The image tag. If not defined, the appVersion will be used.
   tag: ""
+  # -- The image pull policy.
+  pullPolicy: IfNotPresent
 
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
+# -- The environment variables to pass to the MinIO container.
 env:
   {}
   # You have to set at least the following values:
@@ -20,49 +25,60 @@ env:
   # MINIO_ROOT_USER: minio
   # MINIO_ROOT_PASSWORD: minio123
 
+# -- The environment variables to pass to the MinIO container using the envFrom configuration. You can use this to load environment variables from a ConfigMap or a Secret.
 envFrom: null
 
 console:
+  # -- Enable the MinIO console.
   enabled: false
+  # -- The port on which the console will be available.
   port: 9001
   # Enable Ingress for the console
   # ATTENTION: This will create an Ingress resource dedicated to the console,
   # so the console will be available from outside the cluster.
   ingress:
+    # -- Enable the console Ingress. ATTENTION: this will create an Ingress resource dedicated to the console, so the console will be available from outside the cluster.
     enabled: false
+    # -- The Ingress class to use.
     className: ""
+    # -- The annotations to add to the console Ingress.
     annotations:
       {}
       # kubernetes.io/ingress.class: nginx
       # kubernetes.io/tls-acme: "true"
+    # -- The hosts to use for the console Ingress.
     hosts:
       - host: console.chart-example.local
         paths:
           - path: /
             pathType: ImplementationSpecific
+    # -- The TLS configuration to use for the console Ingress.
     tls: []
     #  - secretName: chart-example-tls
     #    hosts:
     #      - chart-example.local
 
 serviceAccount:
-  # Specifies whether a service account should be created
+  # -- Specifies whether a service account should be created.
   create: true
-  # Automatically mount a ServiceAccount's API credentials?
+  # -- Specifies if automatically mount a ServiceAccount's API credentials.
   automount: true
-  # Annotations to add to the service account
+  # -- Annotations to add to the service account.
   annotations: {}
-  # The name of the service account to use.
-  # If not set and create is true, a name is generated using the fullname template
+  # -- The name of the service account to use. If not set and create is true, a name is generated using the fullname template.
   name: ""
 
+# -- The annotations to add to the MinIO pod.
 podAnnotations: {}
+# -- The labels to add to the MinIO pod.
 podLabels: {}
 
+# -- The security context to add to the MinIO pod.
 podSecurityContext:
   {}
   # fsGroup: 2000
 
+# -- The security context to add to the MinIO container.
 securityContext:
   {}
   # capabilities:
@@ -73,21 +89,28 @@ securityContext:
   # runAsUser: 1000
 
 service:
+  # -- The type of MinIO service to create. This is the service for the S3 API.
   type: ClusterIP
+  # -- The port on which the service will be available. This is the service for the S3 API.
   port: 9000
 
 ingress:
+  # -- Enable the Ingress for the MinIO service.
   enabled: false
+  # -- The Ingress class to use.
   className: ""
+  # -- The annotations to add to the Ingress.
   annotations:
     {}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
+  # -- The hosts to use for the Ingress.
   hosts:
     - host: chart-example.local
       paths:
         - path: /
           pathType: ImplementationSpecific
+  # -- The TLS configuration to use for the Ingress.
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
@@ -95,7 +118,9 @@ ingress:
 
 resources:
   requests:
+    # -- The amount of memory that the MinIO container will need.
     memory: 128Mi
+    # -- The amount of CPU that the MinIO container will need.
     cpu: 50m
 
 livenessProbe:
@@ -107,21 +132,40 @@ readinessProbe:
     path: /minio/health/live
     port: http
 
-# Additional volumes on the output Deployment definition.
+persistence:
+  # -- Enable persistence using Persistent Volume Claims.
+  enabled: false
+  # -- The path where the volume will be mounted. ATTENTION: this path must be the same as the one used to store the data in the MinIO container. The `BUCKET_ROOT` environment variable will automatically be set to this path.
+  mountPath: /data
+  # -- The size of the Persistent Volume to request.
+  size: 1Gi
+  # -- The storage class to use for the Persistent Volume.
+  storageClass: ""
+  # -- The access mode of the Persistent Volume.
+  accessMode: ReadWriteOnce
+  # -- The annotations to add to the Persistent Volume Claim.
+  annotations: {}
+  # -- The labels to use for the Persistent Volume Claim.
+  labels: {}
+
+# -- Additional volumes on the output Deployment definition.
 volumes: []
 # - name: foo
 #   secret:
 #     secretName: mysecret
 #     optional: false
 
-# Additional volumeMounts on the output Deployment definition.
+# -- Additional volumeMounts on the output Deployment definition.
 volumeMounts: []
 # - name: foo
 #   mountPath: "/etc/foo"
 #   readOnly: true
 
+# -- Node selector for MinIO pod assignment.
 nodeSelector: {}
 
+# -- Tolerations for MinIO pod assignment.
 tolerations: []
 
+# -- Affinity for MinIO pod assignment.
 affinity: {}

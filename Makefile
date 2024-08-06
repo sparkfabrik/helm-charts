@@ -15,7 +15,7 @@ delete-kind-cluster:
 test-blackfire: RELEASE=blackfire-test
 test-blackfire: CHART=blackfire
 test-blackfire: NAMESPACE=blackfire
-test-blackfire: ADDITIONAL_HELM_FLAGS=--set blackfire.server_id=$(BLACKFIRE_SERVER_ID) --set blackfire.server_token=$(BLACKFIRE_SERVER_TOKEN)
+test-blackfire: ADDITIONAL_HELM_FLAGS=-f tests/blackfire/values.01.yaml
 test-blackfire: OUT_DIR=blackfire
 test-blackfire: helm-generate-templates-template helm-install-template
 
@@ -25,7 +25,7 @@ test-blackfire: helm-generate-templates-template helm-install-template
 test-docker-minio: RELEASE=docker-minio-test
 test-docker-minio: CHART=docker-minio
 test-docker-minio: NAMESPACE=docker-minio
-test-docker-minio: ADDITIONAL_HELM_FLAGS=--set env.BUCKET_NAME=my-bucket --set env.MINIO_ROOT_USER=1234qwer --set env.MINIO_ROOT_PASSWORD=1234qwer
+test-docker-minio: ADDITIONAL_HELM_FLAGS=-f tests/docker-minio/values.01.yaml
 test-docker-minio: OUT_DIR=docker-minio
 test-docker-minio: helm-generate-templates-template helm-install-template
 
