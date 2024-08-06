@@ -20,6 +20,17 @@ entries:
   docker-minio:
   - apiVersion: v2
     appVersion: latest
+    created: "2024-08-06T15:14:37.666590189Z"
+    description: A Helm chart for deploying SparkFabrik Docker-MinIO application on
+      Kubernetes.
+    digest: 595f2fdc321aa361578dda3a853b5b600606ca53e1e9962e4d7ae7d1a0079091
+    name: docker-minio
+    type: application
+    urls:
+    - https://github.com/sparkfabrik/helm-charts/releases/download/docker-minio-0.3.0/docker-minio-0.3.0.tgz
+    version: 0.3.0
+  - apiVersion: v2
+    appVersion: latest
     created: "2024-08-06T08:58:37.436520966Z"
     description: A Helm chart for deploying SparkFabrik Docker-MinIO application on
       Kubernetes.
@@ -40,4 +51,4 @@ entries:
     urls:
     - https://github.com/sparkfabrik/helm-charts/releases/download/docker-minio-0.1.0/docker-minio-0.1.0.tgz
     version: 0.1.0
-generated: "2024-08-06T08:58:37.436529351Z"
+generated: "2024-08-06T15:14:37.666638599Z"
