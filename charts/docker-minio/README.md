@@ -1,6 +1,6 @@
 # docker-minio
 
-![Version: 0.2.0](https://img.shields.io/badge/Version-0.2.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: latest](https://img.shields.io/badge/AppVersion-latest-informational?style=flat-square)
+![Version: 0.3.0](https://img.shields.io/badge/Version-0.3.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: latest](https://img.shields.io/badge/AppVersion-latest-informational?style=flat-square)
 
 A Helm chart for deploying SparkFabrik Docker-MinIO application on Kubernetes.
 
@@ -10,6 +10,7 @@ A Helm chart for deploying SparkFabrik Docker-MinIO application on Kubernetes.
 |-----|------|---------|-------------|
 | image.registry | string | `"ghcr.io"` | The image registry (e.g. docker.io, quay.io, ghcr.io). |
 | image.repository | string | `"sparkfabrik/docker-minio"` | The image repository. |
+| image.fullRepositoryImage | string | `""` | The image repository full url (e.g. docker.io/namespace/image, quay.io/namespace/image, ghcr.io/namespace/image) and repository together as single string. If set, it takes precedence over registry and repository. |
 | image.tag | string | `""` | The image tag. If not defined, the appVersion will be used. |
 | image.pullPolicy | string | `"IfNotPresent"` | The image pull policy. |
 | imagePullSecrets | list | `[]` |  |
@@ -48,7 +49,7 @@ A Helm chart for deploying SparkFabrik Docker-MinIO application on Kubernetes.
 | persistence.enabled | bool | `false` | Enable persistence using Persistent Volume Claims. |
 | persistence.mountPath | string | `"/data"` | The path where the volume will be mounted. ATTENTION: this path must be the same as the one used to store the data in the MinIO container. The `BUCKET_ROOT` environment variable will automatically be set to this path. |
 | persistence.size | string | `"1Gi"` | The size of the Persistent Volume to request. |
-| persistence.storageClass | string | `""` | The storage class to use for the Persistent Volume. |
+| persistence.storageClass | string | `""` | The storage class to use for the Persistent Volume. If not set, the default storage class will be used. |
 | persistence.accessMode | string | `"ReadWriteOnce"` | The access mode of the Persistent Volume. |
 | persistence.annotations | object | `{}` | The annotations to add to the Persistent Volume Claim. |
 | persistence.labels | object | `{}` | The labels to use for the Persistent Volume Claim. |

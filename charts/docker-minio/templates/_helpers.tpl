@@ -60,3 +60,14 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+{{/*
+Create the full url docker image
+*/}}
+{{- define "docker-minio.image" -}}
+{{- if gt (len (trim .Values.image.fullRepositoryImage)) 0 }}
+{{- printf "%s:%s" .Values.image.fullRepositoryImage (.Values.image.tag | default .Chart.AppVersion) }}
+{{- else }}
+{{- printf "%s/%s:%s" .Values.image.registry .Values.image.repository (.Values.image.tag | default .Chart.AppVersion) }}
+{{- end }}
+{{- end }}
