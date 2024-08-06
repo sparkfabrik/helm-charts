@@ -7,6 +7,8 @@ image:
   registry: ghcr.io
   # -- The image repository.
   repository: sparkfabrik/docker-minio
+  # -- The image repository full url (e.g. docker.io/namespace/image, quay.io/namespace/image, ghcr.io/namespace/image) and repository together as single string. If set, it takes precedence over registry and repository.
+  fullRepositoryImage: ""
   # Overrides the image tag whose default is the chart appVersion.
   # -- The image tag. If not defined, the appVersion will be used.
   tag: ""
@@ -139,7 +141,7 @@ persistence:
   mountPath: /data
   # -- The size of the Persistent Volume to request.
   size: 1Gi
-  # -- The storage class to use for the Persistent Volume.
+  # -- The storage class to use for the Persistent Volume. If not set, the default storage class will be used.
   storageClass: ""
   # -- The access mode of the Persistent Volume.
   accessMode: ReadWriteOnce
