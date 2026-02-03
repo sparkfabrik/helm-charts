@@ -3,6 +3,22 @@ entries:
   blackfire:
   - apiVersion: v1
     appVersion: "2"
+    created: "2026-02-03T17:32:59.675791589Z"
+    description: An helm chart for blackfire.io v2
+    digest: c48c63336cfd8fbdeb8ddc8e5c8f1f379c366fcf2b378220a3efe568366aed3d
+    home: https://blackfire.io/
+    maintainers:
+    - email: paolo.mainardi@sparkfabrik.com
+      name: Paolo Mainardi
+      url: https://github.com/paolomainardi
+    name: blackfire
+    sources:
+    - http://blackfire.io
+    urls:
+    - https://github.com/sparkfabrik/helm-charts/releases/download/blackfire-2.1.0/blackfire-2.1.0.tgz
+    version: 2.1.0
+  - apiVersion: v1
+    appVersion: "2"
     created: "2022-07-19T13:04:07.638258379Z"
     description: An helm chart for blackfire.io v2
     digest: 2e5281e30d0ea395f7316289d34709cfe17da55a350d03ff09114bec172bcf8d
@@ -18,6 +34,17 @@ entries:
     - https://github.com/sparkfabrik/blackfire-chart/releases/download/blackfire-2.0.0/blackfire-2.0.0.tgz
     version: 2.0.0
   docker-minio:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2026-02-03T17:32:59.926221989Z"
+    description: A Helm chart for deploying SparkFabrik Docker-MinIO application on
+      Kubernetes.
+    digest: 67cf8e9ce7148f2fcbac69ab894e9df5a98c76aec0f7968f95d8a50e650f0fff
+    name: docker-minio
+    type: application
+    urls:
+    - https://github.com/sparkfabrik/helm-charts/releases/download/docker-minio-0.5.0/docker-minio-0.5.0.tgz
+    version: 0.5.0
   - apiVersion: v2
     appVersion: latest
     created: "2025-06-26T09:38:47.523637877Z"
@@ -62,4 +89,4 @@ entries:
     urls:
     - https://github.com/sparkfabrik/helm-charts/releases/download/docker-minio-0.1.0/docker-minio-0.1.0.tgz
     version: 0.1.0
-generated: "2025-06-26T09:38:47.523656692Z"
+generated: "2026-02-03T17:32:59.926244522Z"
