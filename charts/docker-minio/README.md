@@ -1,6 +1,6 @@
 # docker-minio
 
-![Version: 0.4.0](https://img.shields.io/badge/Version-0.4.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: latest](https://img.shields.io/badge/AppVersion-latest-informational?style=flat-square)
+![Version: 0.5.0](https://img.shields.io/badge/Version-0.5.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: latest](https://img.shields.io/badge/AppVersion-latest-informational?style=flat-square)
 
 A Helm chart for deploying SparkFabrik Docker-MinIO application on Kubernetes.
 
@@ -44,8 +44,10 @@ A Helm chart for deploying SparkFabrik Docker-MinIO application on Kubernetes.
 | resources.requests.cpu | string | `"50m"` | The amount of CPU that the MinIO container will need. |
 | livenessProbe.httpGet.path | string | `"/minio/health/live"` |  |
 | livenessProbe.httpGet.port | string | `"http"` |  |
+| livenessProbe.timeoutSeconds | int | `5` |  |
 | readinessProbe.httpGet.path | string | `"/minio/health/live"` |  |
 | readinessProbe.httpGet.port | string | `"http"` |  |
+| readinessProbe.timeoutSeconds | int | `5` |  |
 | persistence.enabled | bool | `false` | Enable persistence using Persistent Volume Claims. |
 | persistence.mountPath | string | `"/data"` | The path where the volume will be mounted. ATTENTION: this path must be the same as the one used to store the data in the MinIO container. The `BUCKET_ROOT` environment variable will automatically be set to this path. |
 | persistence.size | string | `"1Gi"` | The size of the Persistent Volume to request. |

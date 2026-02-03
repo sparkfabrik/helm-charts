@@ -129,10 +129,12 @@ livenessProbe:
   httpGet:
     path: /minio/health/live
     port: http
+  timeoutSeconds: 5
 readinessProbe:
   httpGet:
     path: /minio/health/live
     port: http
+  timeoutSeconds: 5
 
 persistence:
   # -- Enable persistence using Persistent Volume Claims.

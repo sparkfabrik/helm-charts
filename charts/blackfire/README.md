@@ -1,6 +1,6 @@
 # blackfire
 
-![Version: 2.0.0](https://img.shields.io/badge/Version-2.0.0-informational?style=flat-square) ![AppVersion: 2](https://img.shields.io/badge/AppVersion-2-informational?style=flat-square)
+![Version: 2.1.0](https://img.shields.io/badge/Version-2.1.0-informational?style=flat-square) ![AppVersion: 2](https://img.shields.io/badge/AppVersion-2-informational?style=flat-square)
 
 An helm chart for blackfire.io v2
 
@@ -29,6 +29,10 @@ An helm chart for blackfire.io v2
 | blackfire.server_id | string | `""` |  |
 | blackfire.server_token | string | `""` |  |
 | blackfire.existingSecret | string | `""` |  |
+| blackfire.livenessProbe.tcpSocket.port | string | `"agent"` |  |
+| blackfire.livenessProbe.timeoutSeconds | int | `5` |  |
+| blackfire.readinessProbe.tcpSocket.port | string | `"agent"` |  |
+| blackfire.readinessProbe.timeoutSeconds | int | `5` |  |
 | resources | object | `{}` |  |
 | nodeSelector | object | `{}` |  |
 | tolerations | list | `[]` |  |

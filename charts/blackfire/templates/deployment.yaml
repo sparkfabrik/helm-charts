@@ -49,11 +49,9 @@ spec:
               containerPort: 8307
               protocol: TCP
           livenessProbe:
-            tcpSocket:
-              port: agent
+            {{- toYaml .Values.blackfire.livenessProbe | nindent 12 }}
           readinessProbe:
-            tcpSocket:
-              port: agent
+            {{- toYaml .Values.blackfire.readinessProbe | nindent 12 }}
           resources:
 {{ toYaml .Values.resources | indent 12 }}
     {{- with .Values.nodeSelector }}
