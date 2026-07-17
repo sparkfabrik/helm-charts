@@ -1,6 +1,6 @@
 # docker-minio
 
-![Version: 0.5.0](https://img.shields.io/badge/Version-0.5.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: latest](https://img.shields.io/badge/AppVersion-latest-informational?style=flat-square)
+![Version: 0.6.0](https://img.shields.io/badge/Version-0.6.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: latest](https://img.shields.io/badge/AppVersion-latest-informational?style=flat-square)
 
 A Helm chart for deploying SparkFabrik Docker-MinIO application on Kubernetes.
 
@@ -8,6 +8,8 @@ A Helm chart for deploying SparkFabrik Docker-MinIO application on Kubernetes.
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| global.ci.labels | bool | `false` | Enable rendering of the labels defined in `global.ci.values` on the `metadata.labels` of all chart resources (Deployment, Service, ServiceAccount, PVC, Ingress) and on the pod template. Typically set by the parent chart, not here. |
+| global.ci.values | object | `{}` | Labels rendered on all chart resources when `global.ci.labels` is `true`, as key/value pairs (e.g. `always_on: "true"`). Values are rendered quoted. |
 | image.registry | string | `"ghcr.io"` | The image registry (e.g. docker.io, quay.io, ghcr.io). |
 | image.repository | string | `"sparkfabrik/docker-minio"` | The image repository. |
 | image.fullRepositoryImage | string | `""` | The image repository full url (e.g. docker.io/namespace/image, quay.io/namespace/image, ghcr.io/namespace/image) and repository together as single string. If set, it takes precedence over registry and repository. |

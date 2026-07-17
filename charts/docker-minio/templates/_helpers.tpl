@@ -42,7 +42,7 @@ app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- if and .Values.global .Values.global.ci .Values.global.ci.labels }}
 {{- range $key, $value := .Values.global.ci.values }}
-{{ $key }}: {{ $value | quote }}
+{{ $key | quote }}: {{ $value | quote }}
 {{- end }}
 {{- end }}
 {{- end }}
