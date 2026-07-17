@@ -2,6 +2,16 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
+global:
+  # Global values shared by the parent (umbrella) chart with all its subcharts.
+  # This chart follows the `global.ci.labels` / `global.ci.values` convention
+  # used by SparkFabrik umbrella charts to propagate cluster-wide labels.
+  ci:
+    # -- Enable rendering of the labels defined in `global.ci.values` on the `metadata.labels` of all chart resources (Deployment, Service, ServiceAccount, PVC, Ingress) and on the pod template. Typically set by the parent chart, not here.
+    labels: false
+    # -- Labels rendered on all chart resources when `global.ci.labels` is `true`, as key/value pairs (e.g. `always_on: "true"`). Values are rendered quoted.
+    values: {}
+
 image:
   # -- The image registry (e.g. docker.io, quay.io, ghcr.io).
   registry: ghcr.io

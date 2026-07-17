@@ -40,6 +40,11 @@ helm.sh/chart: {{ include "docker-minio.chart" . }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
+{{- if and .Values.global .Values.global.ci .Values.global.ci.labels }}
+{{- range $key, $value := .Values.global.ci.values }}
+{{ $key | quote }}: {{ $value | quote }}
+{{- end }}
+{{- end }}
 {{- end }}
 
 {{/*
